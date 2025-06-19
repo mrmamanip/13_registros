@@ -9,7 +9,7 @@ struct EMP{
 
 int main (){
     EMP EMPLEADOS[100];
-    int n, sum, mayor, numEMP, increm;
+    int n, sum, mayor, numEMP, empBajos;
     cout<<"Inserte el numero de empleados: ";
     cin>>n;
     for(int i=0;i<n;i++){
@@ -22,30 +22,43 @@ int main (){
 		for (int j=0; j<12;j++){
         	cout<<"Venta del mes ("<<j+1<<"): ";
             cin>>EMPLEADOS[i].ven[j];
-            if (EMPLEADOS[i].ven[j] > 100){
-            	increm=1;
-			}
     	}
         cout<<"Inserte el salario base del empleado "<<EMPLEADOS[i].nom<<": ";
         cin>>EMPLEADOS[i].sal;
-        EMPLEADOS[i].sal = EMPLEADOS[i].sal * 1.1; 
+
     }
 	numEMP=0;
     for (int i=0; i<n;i++){
         sum=0;
         mayor=0;
-
-        for (int j=0; j<12;j++)
+        for (int j=0; j<12;j++){
             sum=sum+EMPLEADOS[i].ven[j];
+		}
+		if (sum > 100){
+        	EMPLEADOS[i].sal = EMPLEADOS[i].sal * 1.1; 
+		}
         if (sum > mayor){
             numEMP=i;
         }
     }
-    cout<<"La mayor venta fue del empleado:"<<endl;
+    cout<<"***EMPLEADO CON MAYOR VENTA***"<<endl;
     cout<<"Nro: "<<EMPLEADOS[numEMP].num<<endl;
     cout<<"Nombre: "<<EMPLEADOS[numEMP].nom<<endl;
-    cout<<"Salario total del empleado "<<EMPLEADOS[numEMP].nom<<": "<<EMPLEADOS[numEMP].sal;
-    
+    cout<<"Salario total del empleado "<<EMPLEADOS[numEMP].nom<<": "<<EMPLEADOS[numEMP].sal<<endl<<endl;
+    cout<<"**EMPLEADOS CON MENOS DE 30 VENTAS REALIZADAS**"<<endl;
+    for (int i=0; i<n;i++){
+        sum=0;
 
+        for (int j=0; j<12;j++){
+            sum=sum+EMPLEADOS[i].ven[j];
+		}
+        if (sum < 30){
+        	empBajos = 1;
+            cout<<"Nro "<<EMPLEADOS[i].num<<" : "<<EMPLEADOS[i].nom<<" - Ventas realizadas: "<<sum<<endl;
+        }
+        if ( i==(n-1) && empBajos == 0 ){
+        	cout<<"No hay empleados con ventas menores a 30.";
+		}
+    }
     return 0;
 }
