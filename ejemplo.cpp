@@ -28,9 +28,9 @@ int main (){
 
     }
 	numEMP=0;
+    mayor=0;
     for (int i=0; i<n;i++){
         sum=0;
-        mayor=0;
         for (int j=0; j<12;j++){
             sum=sum+EMPLEADOS[i].ven[j];
 		}
@@ -38,6 +38,7 @@ int main (){
         	EMPLEADOS[i].sal = EMPLEADOS[i].sal * 1.1; 
 		}
         if (sum > mayor){
+        	mayor=sum;
             numEMP=i;
         }
     }
