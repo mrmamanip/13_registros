@@ -18,7 +18,7 @@ void leerContacto(contactoEmail &, string, char, int, correo);
 void imprimeContacto(contactoEmail &);
 
 int main(){
-    int n, op, modifi, mod, modcorreo, opt;
+    int n, op, modifi, mod, modcorreo, opt, elim, numelim;
     string nom, user, domain;
     char sex, option;
     int edad;
@@ -32,8 +32,9 @@ int main(){
         cout<<"1. Agregar contacto"<<endl;
         cout<<"2. Mostrar contactos"<<endl;
         cout<<"3. Modificar contactos"<<endl;
+        cout<<"4. Eliminar contactos"<<endl;
         cout<<"0. Salir"<<endl;
-        cout<<"Elige una opcion: "; cin>>op;
+        cout<<"\nElige una opcion: "; cin>>op;
         switch(op){
             case 1:
                 cout<<"Ingrese los datos de un usuario: "<<endl;
@@ -62,10 +63,17 @@ int main(){
                 system("pause");
                 break;
             case 3:
-            	cout<<"Inserte el numero de orden del contacto: ";cin>>mod;
+            	system("cls");
+            	cout<<"Menu de modificaciones en el contacto: --------"<<endl<<endl;
+            	cout<<"Lista de contactos:"<<endl;
+            	for(int i = 0; i < n; i++){
+                    cout<<"Contacto #"<<(i+1)<<": "<<lista[i].nom<<"."<<endl;
+                }
+            	cout<<"\nInserte el numero de orden del contacto: ";cin>>mod;
+            	system("pause");
                 do{
                 	system("cls");
-                	cout<<"Menu de cambios en el contacto #"<<mod<<": ---"<<endl<<endl;
+                	cout<<"Menu de modificaciones en el contacto #"<<mod<<": ---"<<endl<<endl;
                 	cout<<"Datos del contacto:"<<endl;
                 	imprimeContacto(lista[mod-1]);
                 	cout<<endl<<endl;
@@ -74,7 +82,7 @@ int main(){
                 	cout<<"3. Modificar edad"<<endl;
                 	cout<<"4. Modificar correo electronico"<<endl;
                 	cout<<"0. Volver"<<endl;
-                	cout<<"Elige una opcion: ";cin>>modifi;
+                	cout<<"\nElige una opcion: ";cin>>modifi;
                 	switch(modifi){
                 		case 1:
                 			cin.ignore();
@@ -92,11 +100,11 @@ int main(){
                 		case 4:
                 			do{
 								system("cls");
-                				cout<<"Menu de cambios en correo electronico: -----"<<endl;
+                				cout<<"Menu de cambios en correo electronico: -----"<<endl<<endl;
                 				cout<<"1. Cambiar usuario"<<endl;
                 				cout<<"2. Cambiar dominio"<<endl;
                 				cout<<"0. Volver"<<endl;
-                				cout<<"Elige una opcion: ";cin>>modcorreo;
+                				cout<<"\nElige una opcion: ";cin>>modcorreo;
                 				switch(modcorreo){
                 					case 1:
                 						cout<<"Inserte nuevo usuario: ";cin>>lista[mod-1].email.user;
@@ -120,6 +128,36 @@ int main(){
 							break;
                 	}
                 } while(modifi != 0);
+                break;
+            case 4:
+            	do{
+            		system("cls");
+					cout<<"Menu de eliminacion de contactos: -------------"<<endl<<endl;
+            		cout<<"Lista de contactos:"<<endl;
+            		for(int i = 0; i < n; i++){
+                	    cout<<"Contacto #"<<(i+1)<<": "<<lista[i].nom<<"."<<endl;
+                	}
+                	cout<<"\n1. Eliminar contacto"<<endl;
+                	cout<<"0. Volver"<<endl;
+                	cout<<"\nElige una opcion: ";cin>>elim;
+                	switch(elim){
+                		case 1:
+                			cout<<"\nElige el numero de lista del contacto a eliminar:";cin>>numelim;
+                			for(int j = (numelim-1); j<n;j++){
+                			lista[j]=lista[j+1];
+							}
+							n--;
+							system("pause");
+							break;
+						case 0:
+							break;
+						default:
+							cout<<"Opcion no valida!"<<endl;
+                			system("pause");
+                			break;
+					}
+				}while(elim != 0);
+            	break;
             case 0:
                 cout<<"Esta seguro de salir? (S/N): ";cin>>option;
                 if (option == 's' || option == 'S'){
