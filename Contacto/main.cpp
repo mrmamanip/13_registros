@@ -1,21 +1,6 @@
 #include<iostream>
+#include"contacto.h"
 using namespace std;
-
-struct correo{
-    string user;
-    string domain;
-};
-
-struct contactoEmail{
-    string nom;
-    char sex;
-    int edad;
-    correo email;
-};
-
-void leerCorreo(correo &, string, string);
-void leerContacto(contactoEmail &, string, char, int, correo);
-void imprimeContacto(contactoEmail &);
 
 int main(){
     int n, op, modifi, mod, modcorreo, opt, elim, numelim;
@@ -28,7 +13,7 @@ int main(){
     opt = 0;
     do{
         system("cls");
-        cout<<"Menu de opciones ::::::::::::::::::::::::::::::::"<<endl;
+        cout<<"Menu de opciones :::::::::::::::::::::::::::::::::"<<endl;
         cout<<"1. Agregar contacto"<<endl;
         cout<<"2. Mostrar contactos"<<endl;
         cout<<"3. Modificar contactos"<<endl;
@@ -173,23 +158,4 @@ int main(){
         }
     } while(opt != 1);
     return 0;
-}
-
-void leerContacto(contactoEmail &c, string n, char s, int e, correo em){
-    c.nom = n;
-    c.sex = s;
-    c.edad = e;
-    c.email = em;
-}
-
-void leerCorreo(correo &c, string u, string d){
-    c.user = u;
-    c.domain = d;
-}
-
-void imprimeContacto(contactoEmail &c){
-    cout<<"Nombre: "<<c.nom<<endl;
-    cout<<"Sexo: "<<c.sex<<endl;
-    cout<<"Edad: "<<c.edad<<endl;
-    cout<<"Email: "<<c.email.user<<"@"<<c.email.domain<<endl;
 }
