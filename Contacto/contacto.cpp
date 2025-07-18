@@ -1,6 +1,6 @@
-#include "contacto.h"
 #include <iostream>
 #include <string>
+#include "contacto.h"
 using namespace std;
 
 void leerContacto(contactoEmail &c, string n, char s, int e, correo em){

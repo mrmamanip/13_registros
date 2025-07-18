@@ -1,5 +1,7 @@
 #include<iostream>
+#include"funciones.h"
 #include"contacto.h"
+
 using namespace std;
 
 int main(){
@@ -23,7 +25,7 @@ int main(){
         switch(op){
             case 1:
             	system("cls");
-            	cout<<
+            	cout<<"Menu de ingreso de datos  :::::::::::::::::::::"<<endl;
                 cout<<"Ingrese los datos de un usuario: "<<endl;
                 cin.ignore();
                 cout<<"Ingrese el nombre del contacto: "; getline(cin,nom);

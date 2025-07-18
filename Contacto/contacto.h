@@ -1,19 +1,8 @@
 #ifndef CONTACTO_H
 #define CONTACTO_H
 #include <string>
+#include "funciones.h"
 using namespace std;
-
-struct correo{
-    string user;
-    string domain;
-};
-
-struct contactoEmail{
-    string nom;
-    char sex;
-    int edad;
-    correo email;
-};
 
 void leerCorreo(correo &, string, string);
 void leerContacto(contactoEmail &, string, char, int, correo);
